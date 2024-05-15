@@ -690,7 +690,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "entity.other.attribute-name",
-      settings: tokens.due1,
+      settings: tokens.key,
     },
     {
       scope: [
@@ -701,14 +701,14 @@ function tokenColors(): TokenColor[] {
         "source.css.less entity.other.attribute-name.id",
         "entity.other.attribute-name.scss",
       ],
-      settings: tokens.due1,
+      settings: tokens.key,
     },
     {
       scope: [
         "entity.other.attribute-name.pseudo-class.css",
         "entity.other.attribute-name.pseudo-element.css",
       ],
-      settings: tokens.due2,
+      settings: tokens.key,
     },
     {
       scope: "invalid",

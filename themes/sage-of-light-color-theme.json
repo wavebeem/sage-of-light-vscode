@@ -167,7 +167,7 @@
     "scrollbarSlider.hoverBackground": "#0b0b0b80",
     "settings.checkboxBackground": "#fff",
     "settings.dropdownBackground": "#fff",
-    "settings.headerForeground": "#00ff00",
+    "settings.headerForeground": "#0b0b0b",
     "settings.modifiedItemIndicator": "#00ff00",
     "settings.numberInputBackground": "#fff",
     "settings.rowHoverBackground": "#ebebeb40",
@@ -308,7 +308,7 @@
     {
       "scope": "entity.other.attribute-name",
       "settings": {
-        "foreground": "#00ff00",
+        "foreground": "#a53f00",
         "fontStyle": ""
       }
     },
@@ -359,7 +359,7 @@
       "scope": "markup.heading",
       "settings": {
         "fontStyle": "bold",
-        "foreground": "#00ff00"
+        "foreground": "#0b0b0b"
       }
     },
     {
