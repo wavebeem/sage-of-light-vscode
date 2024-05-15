@@ -1,0 +1,13 @@
+.DS_Store
+*~lock~
+
+node_modules
+build
+examples
+
+.vscode/settings.json
+
+*.vsix
+*.zip
+*.tgz
+*.tar.gz
