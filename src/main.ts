@@ -73,9 +73,9 @@ const ui = {
 
   accent: oklch(50, 100, 140),
 
-  bracket1: oklch(35, 25, 135),
-  bracket2: oklch(35, 25, 190),
-  bracket3: oklch(35, 25, 40),
+  bracket1: oklch(50, 25, 0),
+  bracket2: oklch(50, 25, 200),
+  bracket3: oklch(50, 25, 310),
 
   error: oklch(50, 100, 0),
 } as const;
@@ -86,11 +86,7 @@ const syntax = {
   keyword: oklch(15, 0, 0),
   punctuation: oklch(50, 0, 0),
   string: oklch(50, 100, 0),
-  number: oklch(50, 100, 0),
   character: oklch(50, 100, 200),
-  // TODO: Boolean
-  // TODO: Number
-  // TODO: Null/undefined
   comment: oklch(50, 100, 140),
   function: oklch(50, 100, 250),
   property: oklch(50, 100, 200),
@@ -116,6 +112,7 @@ const tokens = {
   punctuation: createToken(syntax.punctuation),
   string: createToken(syntax.string),
   stringBold: createToken(syntax.string, "bold"),
+  stringItalic: createToken(syntax.string, "italic"),
   character: createToken(syntax.character),
   comment: createToken(syntax.comment, "italic"),
   function: createToken(syntax.function),
@@ -648,7 +645,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "constant.language",
-      settings: tokens.string,
+      settings: tokens.stringBold,
     },
     // {
     //   scope: [
@@ -912,7 +909,7 @@ function tokenColors(): TokenColor[] {
     {
       name: "self",
       scope: "variable.language",
-      settings: tokens.keyword,
+      settings: tokens.stringBold,
     },
     {
       name: "Properties",
@@ -1032,7 +1029,7 @@ function tokenColors(): TokenColor[] {
         "constant.other.rgb-value",
         "support.constant.color",
       ],
-      settings: tokens.string,
+      settings: tokens.stringBold,
     },
     {
       name: "String placeholders",
