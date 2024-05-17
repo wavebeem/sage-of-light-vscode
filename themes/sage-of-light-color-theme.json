@@ -70,7 +70,7 @@
     "editorBracketMatch.border": "#00000000",
     "editorCursor.foreground": "#bb005e",
     "editorGroup.border": "#bebebe",
-    "editorGroup.dropBackground": "#00ff004d",
+    "editorGroup.dropBackground": "#6fdb554d",
     "editorGroupHeader.border": "#bebebe",
     "editorGroupHeader.noTabsBackground": "#f2f2f2",
     "editorGroupHeader.tabsBackground": "#ebebeb",
@@ -116,7 +116,7 @@
     "list.activeSelectionBackground": "#80808026",
     "list.activeSelectionForeground": "#0b0b0b",
     "list.activeSelectionIconForeground": "#0b0b0b",
-    "list.dropBackground": "#00ff004d",
+    "list.dropBackground": "#6fdb554d",
     "list.errorForeground": "#be0046",
     "list.focusForeground": "#0b0b0b",
     "list.focusHighlightForeground": "#0b0b0b",
@@ -136,7 +136,7 @@
     "merge.incomingHeaderBackground": "#ff7694a6",
     "notificationCenterHeader.background": "#fff",
     "notificationCenterHeader.foreground": "#0b0b0b",
-    "notificationLink.foreground": "#636363",
+    "notificationLink.foreground": "#0063c2",
     "notificationToast.border": "#808080",
     "notifications.background": "#fff",
     "notifications.foreground": "#0b0b0b",
@@ -153,7 +153,7 @@
     "peekViewResult.fileForeground": "#0b0b0b",
     "peekViewResult.lineForeground": "#0b0b0b",
     "peekViewTitle.background": "#f8f8f8",
-    "peekViewTitleDescription.foreground": "#636363",
+    "peekViewTitleDescription.foreground": "#0b0b0b",
     "peekViewTitleLabel.foreground": "#0b0b0b",
     "pickerGroup.border": "#bebebe",
     "progressBar.background": "#0b0b0b",
@@ -168,13 +168,13 @@
     "settings.checkboxBackground": "#fff",
     "settings.dropdownBackground": "#fff",
     "settings.headerForeground": "#0b0b0b",
-    "settings.modifiedItemIndicator": "#00ff00",
+    "settings.modifiedItemIndicator": "#007a00",
     "settings.numberInputBackground": "#fff",
     "settings.rowHoverBackground": "#ebebeb40",
     "settings.textInputBackground": "#fff",
     "sideBar.background": "#ebebeb",
     "sideBar.border": "#bebebe",
-    "sideBar.dropBackground": "#00ff004d",
+    "sideBar.dropBackground": "#6fdb554d",
     "sideBarSectionHeader.background": "#ebebeb",
     "sideBarSectionHeader.border": "#bebebe",
     "statusBar.background": "#ebebeb",
@@ -220,7 +220,7 @@
     "textBlockQuote.border": "#0b0b0b",
     "textLink.activeForeground": "#0063c2",
     "textLink.foreground": "#0063c2",
-    "textPreformat.foreground": "#00ff00",
+    "textPreformat.foreground": "#bb005e",
     "titleBar.activeBackground": "#ebebeb",
     "titleBar.activeForeground": "#0b0b0b",
     "titleBar.border": "#bebebe",
@@ -322,7 +322,7 @@
         "entity.other.attribute-name.scss"
       ],
       "settings": {
-        "foreground": "#00ff00",
+        "foreground": "#a53f00",
         "fontStyle": ""
       }
     },
@@ -332,7 +332,7 @@
         "entity.other.attribute-name.pseudo-element.css"
       ],
       "settings": {
-        "foreground": "#00ff00",
+        "foreground": "#9200d3",
         "fontStyle": ""
       }
     },
@@ -351,22 +351,22 @@
     {
       "scope": "markup.bold",
       "settings": {
-        "fontStyle": "bold",
-        "foreground": "#00ff00"
+        "foreground": "#0b0b0b",
+        "fontStyle": "bold"
       }
     },
     {
       "scope": "markup.heading",
       "settings": {
-        "fontStyle": "bold",
-        "foreground": "#0b0b0b"
+        "foreground": "#0b0b0b",
+        "fontStyle": "bold"
       }
     },
     {
       "scope": "markup.italic",
       "settings": {
-        "fontStyle": "italic",
-        "foreground": "#00ff00"
+        "foreground": "#0b0b0b",
+        "fontStyle": "italic"
       }
     },
     {
@@ -410,7 +410,7 @@
     {
       "scope": "markup.inline.raw",
       "settings": {
-        "foreground": "#00ff00",
+        "foreground": "#bb005e",
         "fontStyle": ""
       }
     },
@@ -442,7 +442,8 @@
     {
       "scope": [
         "constant.numeric",
-        "meta.preprocessor.numeric"
+        "meta.preprocessor.numeric",
+        "entity.other.keyframe-offset.percentage.css"
       ],
       "settings": {
         "foreground": "#bb005e",
@@ -517,8 +518,8 @@
     {
       "scope": "string.tag",
       "settings": {
-        "foreground": "#00ff00",
-        "fontStyle": ""
+        "foreground": "#0b0b0b",
+        "fontStyle": "bold"
       }
     },
     {
@@ -625,7 +626,7 @@
     {
       "scope": "keyword.other.unit",
       "settings": {
-        "foreground": "#0b0b0b",
+        "foreground": "#bb005e",
         "fontStyle": "bold"
       }
     },
@@ -768,7 +769,7 @@
         "support.constant.color"
       ],
       "settings": {
-        "foreground": "#00ff00",
+        "foreground": "#bb005e",
         "fontStyle": ""
       }
     },

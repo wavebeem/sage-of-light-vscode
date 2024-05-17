@@ -86,6 +86,7 @@ const syntax = {
   keyword: oklch(15, 0, 0),
   punctuation: oklch(50, 0, 0),
   string: oklch(50, 100, 0),
+  number: oklch(50, 100, 0),
   character: oklch(50, 100, 200),
   // TODO: Boolean
   // TODO: Number
@@ -96,13 +97,6 @@ const syntax = {
   key: oklch(50, 100, 50),
   type: oklch(50, 100, 310),
 
-  alt1: oklch(50, 0, 0),
-
-  // TODO: Remove these
-  due0: "#00ff00",
-  due1: "#00ff00",
-  due2: "#00ff00",
-  // TODO: Remove these
   tre0: "#00ff00",
   tre1: "#00ff00",
   tre2: "#00ff00",
@@ -121,6 +115,7 @@ const tokens = {
   keyword: createToken(syntax.keyword, "bold"),
   punctuation: createToken(syntax.punctuation),
   string: createToken(syntax.string),
+  stringBold: createToken(syntax.string, "bold"),
   character: createToken(syntax.character),
   comment: createToken(syntax.comment, "italic"),
   function: createToken(syntax.function),
@@ -128,13 +123,9 @@ const tokens = {
   key: createToken(syntax.key),
   type: createToken(syntax.type),
 
-  due0: createToken(syntax.due0),
-  due1: createToken(syntax.due1),
-  due2: createToken(syntax.due2),
-
-  tre0: createToken(syntax.tre0),
-  tre1: createToken(syntax.tre1),
-  tre2: createToken(syntax.tre2),
+  tre0: createToken("#00ff00"),
+  tre1: createToken("#00ff00"),
+  tre2: createToken("#00ff00"),
 } as const;
 
 const terminal = {
@@ -169,14 +160,6 @@ function oklch(lightness: number, chroma: number, hue: number): string {
   const h = hue;
   return new Color("oklch", [l, c, h]).to("srgb").toString({ format: "hex" });
 }
-
-// letsGoOKLCH({
-//   ui,
-//   syntax,
-//   terminal,
-//   diff,
-//   bg,
-// });
 
 /**
  * This isn't a great practice, but VS Code forces us to use transparent colors
@@ -230,7 +213,7 @@ function themeNotifications(): ThemeUIColors {
     "notifications.foreground": ui.fg,
     "notifications.background": bg.white,
     "notifications.border": undefined,
-    "notificationLink.foreground": syntax.alt1,
+    "notificationLink.foreground": ui.link,
   };
 }
 
@@ -266,7 +249,7 @@ function themeWelcome(): ThemeUIColors {
     "textLink.activeForeground": ui.link,
     "textBlockQuote.background": transparent,
     "textBlockQuote.border": syntax.default,
-    "textPreformat.foreground": syntax.due1,
+    "textPreformat.foreground": syntax.string,
   };
 }
 
@@ -274,7 +257,7 @@ function themeSettings(): ThemeUIColors {
   return {
     "settings.headerForeground": ui.fg,
     "settings.rowHoverBackground": alpha(ui.bg1, 25),
-    "settings.modifiedItemIndicator": syntax.due1,
+    "settings.modifiedItemIndicator": ui.accent,
     "settings.dropdownBackground": bg.white,
     "settings.checkboxBackground": bg.white,
     "settings.textInputBackground": bg.white,
@@ -424,7 +407,7 @@ function themeDropdown(): ThemeUIColors {
 }
 
 function themeDragAndDrop(): ThemeUIColors {
-  const color = alpha(syntax.due2, 30);
+  const color = alpha(bg.green, 30);
   return {
     "list.dropBackground": color,
     "sideBar.dropBackground": color,
@@ -477,7 +460,7 @@ function themePeekView(): ThemeUIColors {
     "peekView.border": ui.border0,
     "peekViewTitle.background": bg.lightGray,
     "peekViewTitleLabel.foreground": ui.fg,
-    "peekViewTitleDescription.foreground": syntax.alt1,
+    "peekViewTitleDescription.foreground": ui.fg,
     "peekViewEditor.background": bg.lightGray,
     "peekViewResult.background": bg.lightGray,
     "peekViewResult.fileForeground": ui.fg,
@@ -708,7 +691,7 @@ function tokenColors(): TokenColor[] {
         "entity.other.attribute-name.pseudo-class.css",
         "entity.other.attribute-name.pseudo-element.css",
       ],
-      settings: tokens.key,
+      settings: tokens.type,
     },
     {
       scope: "invalid",
@@ -724,24 +707,15 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "markup.bold",
-      settings: {
-        fontStyle: "bold",
-        foreground: syntax.due1,
-      },
+      settings: tokens.keyword,
     },
     {
       scope: "markup.heading",
-      settings: {
-        fontStyle: "bold",
-        foreground: ui.fg,
-      },
+      settings: createToken(syntax.keyword, "bold"),
     },
     {
       scope: "markup.italic",
-      settings: {
-        fontStyle: "italic",
-        foreground: syntax.due1,
-      },
+      settings: createToken(syntax.keyword, "italic"),
     },
     {
       scope: "markup.strikethrough",
@@ -776,8 +750,9 @@ function tokenColors(): TokenColor[] {
       settings: tokens.punctuation,
     },
     {
+      // Markdown inline code
       scope: "markup.inline.raw",
-      settings: tokens.due1,
+      settings: tokens.string,
     },
     {
       name: "brackets of XML/HTML tags",
@@ -793,7 +768,11 @@ function tokenColors(): TokenColor[] {
       settings: tokens.string,
     },
     {
-      scope: ["constant.numeric", "meta.preprocessor.numeric"],
+      scope: [
+        "constant.numeric",
+        "meta.preprocessor.numeric",
+        "entity.other.keyframe-offset.percentage.css",
+      ],
       settings: tokens.string,
     },
     {
@@ -832,7 +811,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "string.tag",
-      settings: tokens.tre1,
+      settings: tokens.keyword,
     },
     {
       scope: "string.value",
@@ -900,7 +879,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "keyword.other.unit",
-      settings: tokens.keyword,
+      settings: tokens.stringBold,
     },
     {
       scope: [
@@ -1053,7 +1032,7 @@ function tokenColors(): TokenColor[] {
         "constant.other.rgb-value",
         "support.constant.color",
       ],
-      settings: tokens.due0,
+      settings: tokens.string,
     },
     {
       name: "String placeholders",
