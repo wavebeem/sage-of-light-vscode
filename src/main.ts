@@ -57,8 +57,13 @@ interface TokenColor {
 }
 
 const ui = {
-  bg0: oklch(96, 0, 0),
-  bg1: oklch(94, 0, 0),
+  bg0: oklch(100, 0, 0),
+  bg1: oklch(95, 0, 0),
+
+  tooltip: {
+    bg: oklch(98, 5, 60),
+    border: oklch(70, 10, 60),
+  },
 
   cursor: oklch(50, 100, 0),
 
@@ -66,12 +71,12 @@ const ui = {
 
   fg: oklch(15, 0, 0),
 
-  border0: oklch(80, 0, 0),
+  border0: oklch(85, 0, 0),
   border1: oklch(60, 0, 0),
 
   link: oklch(50, 100, 250),
 
-  accent: oklch(50, 100, 140),
+  accent: oklch(50, 100, 310),
 
   bracket1: oklch(50, 25, 0),
   bracket2: oklch(50, 25, 200),
@@ -82,15 +87,18 @@ const ui = {
 
 const syntax = {
   default: oklch(15, 0, 0),
-
   keyword: oklch(15, 0, 0),
-  punctuation: oklch(50, 0, 0),
-  string: oklch(50, 100, 0),
-  comment: oklch(50, 100, 140),
-  function: oklch(50, 100, 250),
-  property: oklch(50, 100, 200),
-  key: oklch(50, 100, 50),
-  type: oklch(50, 100, 310),
+  punctuation: oklch(54, 0, 0),
+
+  string: oklch(54, 100, 0),
+  function: oklch(54, 100, 250),
+  comment: oklch(54, 100, 140),
+  // property: oklch(54, 100, 200),
+  // key: oklch(54, 100, 50),
+  // type: oklch(54, 100, 310),
+  property: oklch(54, 100, 310),
+  key: oklch(54, 100, 50),
+  type: oklch(54, 100, 200),
 } as const;
 
 function createToken(
@@ -102,9 +110,9 @@ function createToken(
 
 const tokens = {
   default: createToken(syntax.default),
-
   keyword: createToken(syntax.keyword, "bold"),
   punctuation: createToken(syntax.punctuation),
+
   string: createToken(syntax.string),
   stringBold: createToken(syntax.string, "bold"),
   stringItalic: createToken(syntax.string, "italic"),
@@ -117,12 +125,12 @@ const tokens = {
 
 const terminal = {
   black: oklch(40, 0, 0),
-  red: oklch(50, 100, 10),
-  green: oklch(50, 100, 140),
-  yellow: oklch(50, 100, 60),
-  blue: oklch(50, 100, 250),
-  magenta: oklch(50, 100, 300),
-  cyan: oklch(50, 100, 200),
+  red: oklch(54, 100, 10),
+  green: oklch(54, 100, 140),
+  yellow: oklch(54, 100, 50),
+  blue: oklch(54, 100, 250),
+  magenta: oklch(54, 100, 310),
+  cyan: oklch(54, 100, 200),
   white: oklch(100, 0, 0),
 } as const;
 
@@ -195,10 +203,10 @@ function themeNotifications(): ThemeUIColors {
   return {
     "notificationCenter.border": undefined,
     "notificationCenterHeader.foreground": ui.fg,
-    "notificationCenterHeader.background": bg.white,
+    "notificationCenterHeader.background": ui.bg1,
     "notificationToast.border": ui.border1,
     "notifications.foreground": ui.fg,
-    "notifications.background": bg.white,
+    "notifications.background": ui.bg1,
     "notifications.border": undefined,
     "notificationLink.foreground": ui.link,
   };
@@ -206,7 +214,7 @@ function themeNotifications(): ThemeUIColors {
 
 function themeList(): ThemeUIColors {
   return {
-    "quickInput.background": bg.white,
+    "quickInput.background": ui.bg1,
 
     "list.errorForeground": terminal.red,
     "list.warningForeground": terminal.yellow,
@@ -245,10 +253,10 @@ function themeSettings(): ThemeUIColors {
     "settings.headerForeground": ui.fg,
     "settings.rowHoverBackground": alpha(ui.bg1, 25),
     "settings.modifiedItemIndicator": ui.accent,
-    "settings.dropdownBackground": bg.white,
-    "settings.checkboxBackground": bg.white,
-    "settings.textInputBackground": bg.white,
-    "settings.numberInputBackground": bg.white,
+    "settings.dropdownBackground": ui.bg0,
+    "settings.checkboxBackground": ui.bg0,
+    "settings.textInputBackground": ui.bg0,
+    "settings.numberInputBackground": ui.bg0,
   };
 }
 
@@ -378,7 +386,7 @@ function themeHighlightBorders(): ThemeUIColors {
 function themeScrollbar(): ThemeUIColors {
   return {
     "scrollbar.shadow": ui.shadow,
-    "scrollbarSlider.background": alpha(ui.fg, 40),
+    "scrollbarSlider.background": alpha(ui.fg, 20),
     "scrollbarSlider.hoverBackground": alpha(ui.fg, 50),
     "scrollbarSlider.activeBackground": alpha(ui.fg, 60),
   };
@@ -444,12 +452,12 @@ function themeBracketColors(): ThemeUIColors {
 
 function themePeekView(): ThemeUIColors {
   return {
-    "peekView.border": ui.border0,
-    "peekViewTitle.background": bg.lightGray,
+    "peekView.border": ui.tooltip.border,
+    "peekViewTitle.background": ui.tooltip.bg,
     "peekViewTitleLabel.foreground": ui.fg,
     "peekViewTitleDescription.foreground": ui.fg,
-    "peekViewEditor.background": bg.lightGray,
-    "peekViewResult.background": bg.lightGray,
+    "peekViewEditor.background": ui.tooltip.bg,
+    "peekViewResult.background": ui.tooltip.bg,
     "peekViewResult.fileForeground": ui.fg,
     "peekViewResult.lineForeground": ui.fg,
   };
@@ -458,9 +466,9 @@ function themePeekView(): ThemeUIColors {
 function themeEditor(): ThemeUIColors {
   return {
     "editorWidget.foreground": ui.fg,
-    "editorWidget.background": ui.bg0,
+    "editorWidget.background": ui.bg1,
     "editorWidget.border": ui.border1,
-    "editorWidget.resizeBorder": ui.bg0,
+    "editorWidget.resizeBorder": ui.bg1,
     "editorBracketMatch.background": alpha(bg.purple, 50),
     "editorBracketMatch.border": transparent,
     "editor.findMatchBackground": alpha(bg.orange, 50),
@@ -470,7 +478,7 @@ function themeEditor(): ThemeUIColors {
     "editor.background": ui.bg0,
     "editor.foldBackground": transparent,
     "editorLink.activeForeground": terminal.blue,
-    "editor.lineHighlightBackground": bg.white,
+    "editor.lineHighlightBackground": bg.lightGray,
     "editor.rangeHighlightBackground": alpha(bg.yellow, 25),
     "editor.selectionBackground": alpha(bg.green, 30),
     "editor.inactiveSelectionBackground": alpha(bg.green, 30),
@@ -491,10 +499,10 @@ function themeEditor(): ThemeUIColors {
 
     "editorRuler.foreground": alpha(ui.border0, 50),
 
-    "editorSuggestWidget.border": ui.border1,
-    "editorSuggestWidget.background": bg.white,
-    "editorHoverWidget.border": ui.border1,
-    "editorHoverWidget.background": bg.white,
+    "editorSuggestWidget.border": ui.tooltip.border,
+    "editorSuggestWidget.background": ui.tooltip.bg,
+    "editorHoverWidget.border": ui.tooltip.border,
+    "editorHoverWidget.background": ui.tooltip.bg,
 
     "editorGutter.background": undefined,
     "editorGutter.modifiedBackground": terminal.magenta,
@@ -548,7 +556,7 @@ function colors(): ThemeUIColors {
     "widget.shadow": ui.shadow,
     ...themeScrollbar(),
     "input.border": ui.border1,
-    "input.background": bg.white,
+    "input.background": ui.bg0,
     "input.placeholderForeground": ui.border1,
     "progressBar.background": ui.fg,
     "inputOption.activeBorder": ui.fg,
@@ -582,7 +590,7 @@ function colors(): ThemeUIColors {
     ...themeMerge(),
     ...themeGit(),
     ...themeTitlebar(),
-    "debugToolBar.background": ui.bg0,
+    "debugToolBar.background": ui.bg1,
     ...themeDropdown(),
     ...themeHighlightBorders(),
     ...themeTerminal(),
@@ -987,7 +995,7 @@ function tokenColors(): TokenColor[] {
       settings: tokens.keyword,
     },
     {
-      name: "Variable and parameter name",
+      name: "Variable name",
       scope: [
         "variable",
         "meta.definition.variable.name",
@@ -995,6 +1003,11 @@ function tokenColors(): TokenColor[] {
         "entity.name.variable",
       ],
       settings: tokens.default,
+    },
+    {
+      name: "Parameter name",
+      scope: ["variable.parameter"],
+      settings: tokens.key,
     },
     // {
     //   name: "Constants and enums",
@@ -1090,16 +1103,18 @@ function showContrast(
 ): void {
   // const algorithm = "APCA";
   const algorithm = "WCAG21";
+
+  // APCA contrast can be negative
   const contrast = new Color(fg).contrast(bg, algorithm);
   const target = Contrast[algorithm][level];
-  const fail = contrast < target;
+  const fail = Math.abs(contrast) < target;
   const failBadge = "[!]";
   const noBadge = " ".repeat(failBadge.length);
   const str = [
     fail ? failBadge : noBadge,
-    ANSI.yellow(contrast.toFixed(2).toString().padStart(5)),
-    ANSI.cyan("<"),
-    ANSI.yellow(String(target).padStart(4)),
+    ANSI.yellow(contrast.toFixed(2).toString().padStart(7)),
+    ANSI.cyan("<>"),
+    ANSI.yellow(String(target).padStart(3)),
     ANSI.cyan("::"),
     bgStr,
     ANSI.cyan("<-"),
@@ -1127,26 +1142,16 @@ function printContrastReport(): void {
   showContrast("text", ui.fg, ui.bg1, "ui.fg0", "ui.bg1");
   showContrast("text", ui.fg, ui.bg0, "ui.fg", "ui.bg0");
   showContrast("text", ui.fg, ui.bg1, "ui.fg", "ui.bg1");
-  showContrast("text", ui.link, ui.bg0, "ui.accent0", "ui.bg0");
-  showContrast("text", ui.link, ui.bg1, "ui.accent0", "ui.bg1");
-  showContrast("text", ui.accent, ui.bg0, "ui.accent0", "ui.bg0");
-  showContrast("text", ui.accent, ui.bg1, "ui.accent0", "ui.bg1");
-  // showContrast("text", ui.accent1, ui.bg0, "ui.accent1", "ui.bg0");
-  // showContrast("text", ui.accent1, ui.bg1, "ui.accent1", "ui.bg1");
+  showContrast("text", ui.link, ui.bg0, "ui.link", "ui.bg0");
+  showContrast("text", ui.link, ui.bg1, "ui.link", "ui.bg1");
+  showContrast("text", ui.accent, ui.bg0, "ui.accent", "ui.bg0");
+  showContrast("text", ui.accent, ui.bg1, "ui.accent", "ui.bg1");
   showContrast("decoration", ui.border0, ui.bg0, "ui.border0", "ui.bg0");
   showContrast("decoration", ui.border0, ui.bg1, "ui.border0", "ui.bg1");
   showContrast("ui", ui.border1, ui.bg0, "ui.border1", "ui.bg0");
   showContrast("ui", ui.border1, ui.bg1, "ui.border1", "ui.bg1");
 
   for (const [name, color] of Object.entries(syntax)) {
-    if (
-      name.startsWith("uno") ||
-      name.startsWith("due") ||
-      name.startsWith("tre")
-    ) {
-      // TODO: Remove these colors
-      continue;
-    }
     showContrast("text", color, ui.bg0, `syntax.${name}`, "ui.bg0");
   }
   for (const [name, color] of Object.entries(terminal)) {
@@ -1154,7 +1159,7 @@ function printContrastReport(): void {
       continue;
     }
     showContrast("text", color, ui.bg0, `terminal.${name}`, "ui.bg0");
-    showContrast("text", color, ui.bg1, `terminal.${name}`, "ui.bg1");
+    // showContrast("text", color, ui.bg1, `terminal.${name}`, "ui.bg1");
   }
   showContrast("text", ui.bracket1, ui.bg0, "ui.bracket1", "ui.bg0");
   showContrast("text", ui.bracket2, ui.bg0, "ui.bracket2", "ui.bg0");
