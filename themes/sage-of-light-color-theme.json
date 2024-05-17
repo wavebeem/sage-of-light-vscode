@@ -345,7 +345,8 @@
     {
       "scope": "markup.underline",
       "settings": {
-        "fontStyle": "underline"
+        "fontStyle": "underline",
+        "foreground": "#0063c2"
       }
     },
     {
@@ -834,7 +835,7 @@
         "constant.other.option"
       ],
       "settings": {
-        "foreground": "#bb005e",
+        "foreground": "#00747b",
         "fontStyle": ""
       }
     },

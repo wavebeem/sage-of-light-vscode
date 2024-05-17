@@ -86,16 +86,11 @@ const syntax = {
   keyword: oklch(15, 0, 0),
   punctuation: oklch(50, 0, 0),
   string: oklch(50, 100, 0),
-  character: oklch(50, 100, 200),
   comment: oklch(50, 100, 140),
   function: oklch(50, 100, 250),
   property: oklch(50, 100, 200),
   key: oklch(50, 100, 50),
   type: oklch(50, 100, 310),
-
-  tre0: "#00ff00",
-  tre1: "#00ff00",
-  tre2: "#00ff00",
 } as const;
 
 function createToken(
@@ -113,16 +108,11 @@ const tokens = {
   string: createToken(syntax.string),
   stringBold: createToken(syntax.string, "bold"),
   stringItalic: createToken(syntax.string, "italic"),
-  character: createToken(syntax.character),
   comment: createToken(syntax.comment, "italic"),
   function: createToken(syntax.function),
   property: createToken(syntax.property),
   key: createToken(syntax.key),
   type: createToken(syntax.type),
-
-  tre0: createToken("#00ff00"),
-  tre1: createToken("#00ff00"),
-  tre2: createToken("#00ff00"),
 } as const;
 
 const terminal = {
@@ -700,6 +690,7 @@ function tokenColors(): TokenColor[] {
       scope: "markup.underline",
       settings: {
         fontStyle: "underline",
+        foreground: ui.link,
       },
     },
     {
@@ -1050,7 +1041,7 @@ function tokenColors(): TokenColor[] {
         "keyword.operator.negation.regexp",
         "support.other.parenthesis.regexp",
       ],
-      settings: tokens.character,
+      settings: tokens.property,
     },
     {
       scope: [
@@ -1059,23 +1050,23 @@ function tokenColors(): TokenColor[] {
         "constant.other.character-class.regexp",
         "constant.character.set.regexp",
       ],
-      settings: tokens.character,
+      settings: tokens.property,
     },
     {
       scope: ["keyword.operator.or.regexp", "keyword.control.anchor.regexp"],
-      settings: tokens.character,
+      settings: tokens.property,
     },
     {
       scope: "keyword.operator.quantifier.regexp",
-      settings: tokens.character,
+      settings: tokens.property,
     },
     {
       scope: ["constant.character", "constant.other.option"],
-      settings: tokens.string,
+      settings: tokens.property,
     },
     {
       scope: "constant.character.escape",
-      settings: tokens.character,
+      settings: tokens.property,
     },
     {
       scope: "entity.name.label",
