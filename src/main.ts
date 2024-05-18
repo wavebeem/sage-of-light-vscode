@@ -93,9 +93,6 @@ const syntax = {
   string: oklch(54, 100, 0),
   function: oklch(54, 100, 250),
   comment: oklch(54, 100, 140),
-  // property: oklch(54, 100, 200),
-  // key: oklch(54, 100, 50),
-  // type: oklch(54, 100, 310),
   property: oklch(54, 100, 310),
   key: oklch(54, 100, 50),
   type: oklch(54, 100, 200),
@@ -115,7 +112,6 @@ const tokens = {
 
   string: createToken(syntax.string),
   stringBold: createToken(syntax.string, "bold"),
-  stringItalic: createToken(syntax.string, "italic"),
   comment: createToken(syntax.comment, "italic"),
   function: createToken(syntax.function),
   property: createToken(syntax.property),
