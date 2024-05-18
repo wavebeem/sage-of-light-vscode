@@ -57,22 +57,22 @@ interface TokenColor {
 }
 
 const ui = {
+  fg: oklch(30, 0, 0),
+
   bg0: oklch(100, 0, 0),
   bg1: oklch(95, 0, 0),
 
+  border0: oklch(85, 0, 0),
+  border1: oklch(60, 0, 0),
+
   tooltip: {
-    bg: oklch(98, 5, 60),
-    border: oklch(70, 10, 60),
+    bg: oklch(98, 10, 100),
+    border: oklch(75, 20, 100),
   },
 
   cursor: oklch(50, 100, 0),
 
   shadow: transparent,
-
-  fg: oklch(15, 0, 0),
-
-  border0: oklch(85, 0, 0),
-  border1: oklch(60, 0, 0),
 
   link: oklch(50, 100, 250),
 
@@ -86,8 +86,8 @@ const ui = {
 } as const;
 
 const syntax = {
-  default: oklch(15, 0, 0),
-  keyword: oklch(15, 0, 0),
+  default: oklch(20, 0, 0),
+  keyword: oklch(20, 0, 0),
   punctuation: oklch(54, 0, 0),
 
   string: oklch(54, 100, 0),
@@ -137,11 +137,10 @@ const diff = {
 
 const bg = {
   green: oklch(80, 50, 140),
-  orange: oklch(80, 50, 40),
-  yellow: oklch(80, 50, 110),
-  blue: oklch(80, 50, 260),
-  purple: oklch(80, 50, 330),
-  lightGray: oklch(98, 0, 0),
+  orange: oklch(80, 50, 50),
+  yellow: oklch(80, 50, 100),
+  blue: oklch(80, 50, 250),
+  purple: oklch(80, 50, 310),
   white: oklch(100, 0, 0),
 } as const;
 
@@ -217,18 +216,18 @@ function themeList(): ThemeUIColors {
     "list.highlightForeground": ui.accent,
 
     "list.focusForeground": ui.fg,
-    "list.focusHighlightForeground": ui.fg,
-    "list.activeSelectionIconForeground": ui.fg,
-    "list.activeSelectionForeground": ui.fg,
-    "list.activeSelectionBackground": alpha(ui.border1, 15),
+    "list.focusHighlightForeground": ui.bg0,
+    "list.activeSelectionIconForeground": ui.bg0,
+    "list.activeSelectionForeground": ui.bg0,
+    "list.activeSelectionBackground": ui.accent,
 
     "list.inactiveSelectionIconForeground": ui.fg,
     "list.inactiveSelectionForeground": ui.fg,
     "list.inactiveSelectionBackground": alpha(ui.border1, 15),
 
-    "quickInputList.focusIconForeground": ui.fg,
-    "quickInputList.focusForeground": ui.fg,
-    "quickInputList.focusBackground": alpha(ui.border1, 15),
+    "quickInputList.focusIconForeground": ui.bg0,
+    "quickInputList.focusForeground": ui.bg0,
+    "quickInputList.focusBackground": ui.accent,
 
     "list.hoverBackground": alpha(ui.border1, 10),
   };
@@ -327,14 +326,21 @@ function themeGit(): ThemeUIColors {
 }
 
 function themeStatusBar(): ThemeUIColors {
+  // Hover colors don't appear to work right for light themes
   return {
     "statusBar.border": ui.border0,
-    "statusBarItem.activeBackground": alpha(ui.border1, 40),
-    "statusBarItem.hoverBackground": alpha(ui.border1, 20),
+
+    "statusBarItem.errorBackground": ui.error,
+    "statusBarItem.errorForeground": ui.bg0,
+    "statusBarItem.errorHoverBackground": ui.error,
+    "statusBarItem.errorHoverForeground": ui.bg0,
+
+    // "statusBarItem.activeBackground": alpha(ui.border1, 40),
+    // "statusBarItem.hoverBackground": alpha(ui.border1, 20),
     "statusBarItem.remoteForeground": ui.fg,
     "statusBarItem.remoteBackground": ui.bg1,
-    "statusBarItem.remoteHoverForeground": ui.fg,
-    "statusBarItem.remoteHoverBackground": alpha(ui.border1, 20),
+    // "statusBarItem.remoteHoverForeground": ui.fg,
+    // "statusBarItem.remoteHoverBackground": alpha(ui.border1, 20),
     "statusBar.background": ui.bg1,
     "statusBar.debuggingBackground": ui.bg1,
     "statusBar.noFolderBackground": ui.bg1,
@@ -474,7 +480,7 @@ function themeEditor(): ThemeUIColors {
     "editor.background": ui.bg0,
     "editor.foldBackground": transparent,
     "editorLink.activeForeground": terminal.blue,
-    "editor.lineHighlightBackground": bg.lightGray,
+    "editor.lineHighlightBackground": alpha(ui.fg, 5),
     "editor.rangeHighlightBackground": alpha(bg.yellow, 25),
     "editor.selectionBackground": alpha(bg.green, 30),
     "editor.inactiveSelectionBackground": alpha(bg.green, 30),
@@ -598,11 +604,11 @@ function colors(): ThemeUIColors {
 function themeCommandCenter(): ThemeUIColors {
   return {
     "commandCenter.foreground": ui.fg,
-    "commandCenter.inactiveForeground": ui.border1,
+    "commandCenter.inactiveForeground": ui.border0,
     "commandCenter.background": ui.bg1,
     "commandCenter.border": ui.border0,
     "commandCenter.inactiveBorder": ui.border0,
-    "commandCenter.activeBackground": alpha(ui.border1, 10),
+    "commandCenter.activeBackground": ui.bg1,
     "commandCenter.activeBorder": ui.border0,
   };
 }
@@ -1134,8 +1140,6 @@ function save(): void {
 function printContrastReport(): void {
   showContrast("text", ui.error, ui.bg0, "ui.error", "ui.bg0");
   showContrast("text", ui.error, ui.bg1, "ui.error", "ui.bg1");
-  showContrast("text", ui.fg, ui.bg0, "ui.fg0", "ui.bg0");
-  showContrast("text", ui.fg, ui.bg1, "ui.fg0", "ui.bg1");
   showContrast("text", ui.fg, ui.bg0, "ui.fg", "ui.bg0");
   showContrast("text", ui.fg, ui.bg1, "ui.fg", "ui.bg1");
   showContrast("text", ui.link, ui.bg0, "ui.link", "ui.bg0");

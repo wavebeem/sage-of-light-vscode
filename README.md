@@ -1,8 +1,8 @@
-# Four Sages Theme
+# Sage of Light Theme
 
 > For Visual Studio Code
 
-A dark theme with green, teal, purple, and orange!
+A light theme with a variety of saturated colors
 
 ![](img/screenshot.webp)
 
