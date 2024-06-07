@@ -57,13 +57,13 @@ interface TokenColor {
 }
 
 const ui = {
-  fg: oklch(30, 0, 0),
+  fg: oklch(30, 40, 190),
 
-  bg0: oklch(100, 0, 0),
-  bg1: oklch(95, 0, 0),
+  bg0: oklch(100, 0, 190),
+  bg1: oklch(95, 2, 190),
 
-  border0: oklch(85, 0, 0),
-  border1: oklch(60, 0, 0),
+  border0: oklch(85, 4, 190),
+  border1: oklch(60, 4, 190),
 
   tooltip: {
     bg: oklch(98, 10, 100),
@@ -76,26 +76,26 @@ const ui = {
 
   link: oklch(50, 100, 250),
 
-  accent: oklch(50, 100, 310),
+  accent: oklch(50, 100, 300),
 
   bracket1: oklch(50, 25, 0),
-  bracket2: oklch(50, 25, 200),
-  bracket3: oklch(50, 25, 310),
+  bracket2: oklch(50, 25, 190),
+  bracket3: oklch(50, 25, 300),
 
   error: oklch(50, 100, 0),
 } as const;
 
 const syntax = {
   default: oklch(20, 0, 0),
-  keyword: oklch(20, 0, 0),
-  punctuation: oklch(54, 0, 0),
+  keyword: oklch(50, 100, 300),
+  punctuation: oklch(55, 40, 300),
 
-  string: oklch(54, 100, 0),
-  function: oklch(54, 100, 250),
-  comment: oklch(54, 100, 140),
-  property: oklch(54, 100, 310),
-  key: oklch(54, 100, 50),
-  type: oklch(54, 100, 200),
+  string: oklch(50, 100, 135),
+  function: oklch(50, 100, 40),
+  comment: oklch(40, 40, 300),
+  property: oklch(40, 50, 190),
+  key: oklch(50, 100, 190),
+  type: oklch(50, 40, 40),
 } as const;
 
 function createToken(
@@ -107,6 +107,7 @@ function createToken(
 
 const tokens = {
   default: createToken(syntax.default),
+  // keyword: createToken(syntax.keyword),
   keyword: createToken(syntax.keyword, "bold"),
   punctuation: createToken(syntax.punctuation),
 
@@ -116,7 +117,7 @@ const tokens = {
   function: createToken(syntax.function),
   property: createToken(syntax.property),
   key: createToken(syntax.key),
-  type: createToken(syntax.type),
+  type: createToken(syntax.type, "bold"),
 } as const;
 
 const terminal = {
