@@ -15,7 +15,6 @@ const Contrast = {
     text: 45,
     ui: 30,
     decoration: 10,
-    // decoration: 15,
   },
   WCAG21: {
     text: 4.5,
@@ -62,8 +61,8 @@ const ui = {
   bg0: oklch(100, 0, 190),
   bg1: oklch(95, 2, 190),
 
-  border0: oklch(85, 4, 190),
-  border1: oklch(60, 4, 190),
+  border0: oklch(85, 8, 190),
+  border1: oklch(60, 8, 190),
 
   tooltip: {
     bg: oklch(98, 10, 100),
@@ -74,28 +73,28 @@ const ui = {
 
   shadow: transparent,
 
-  link: oklch(50, 100, 250),
+  link: oklch(47, 80, 250),
 
-  accent: oklch(50, 100, 300),
+  accent: oklch(47, 80, 300),
 
-  bracket1: oklch(50, 25, 0),
-  bracket2: oklch(50, 25, 190),
-  bracket3: oklch(50, 25, 300),
+  bracket1: oklch(55, 40, 300),
+  bracket2: oklch(55, 40, 40),
+  bracket3: oklch(55, 40, 135),
 
   error: oklch(50, 100, 0),
 } as const;
 
 const syntax = {
-  default: oklch(20, 0, 0),
-  keyword: oklch(50, 100, 300),
+  default: oklch(20, 30, 190),
+  keyword: oklch(47, 100, 300),
   punctuation: oklch(55, 40, 300),
 
-  string: oklch(50, 100, 135),
-  function: oklch(50, 100, 40),
-  comment: oklch(40, 40, 300),
-  property: oklch(40, 50, 190),
-  key: oklch(50, 100, 190),
-  type: oklch(50, 40, 40),
+  string: oklch(52, 100, 135),
+  type: oklch(47, 60, 40),
+  function: oklch(52, 100, 40),
+  property: oklch(52, 100, 190),
+  comment: oklch(55, 0, 300),
+  key: oklch(42, 60, 300),
 } as const;
 
 function createToken(
@@ -107,7 +106,6 @@ function createToken(
 
 const tokens = {
   default: createToken(syntax.default),
-  // keyword: createToken(syntax.keyword),
   keyword: createToken(syntax.keyword, "bold"),
   punctuation: createToken(syntax.punctuation),
 
@@ -1022,7 +1020,11 @@ function tokenColors(): TokenColor[] {
     // },
     {
       name: "Object keys, TS grammar specific",
-      scope: ["meta.object-literal.key", "variable.object.property"],
+      scope: [
+        "meta.object-literal.key",
+        "variable.object.property",
+        "source.json support.type.property-name",
+      ],
       settings: tokens.key,
     },
     {
