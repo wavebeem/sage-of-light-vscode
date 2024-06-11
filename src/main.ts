@@ -1008,7 +1008,7 @@ function tokenColors(): TokenColor[] {
     {
       name: "Parameter name",
       scope: ["variable.parameter"],
-      settings: tokens.key,
+      settings: tokens.property,
     },
     // {
     //   name: "Constants and enums",
