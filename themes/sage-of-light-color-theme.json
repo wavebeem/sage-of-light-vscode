@@ -17,7 +17,7 @@
     "badge.foreground": "#fff",
     "breadcrumb.background": "#fff",
     "button.background": "#007671",
-    "button.border": "#0009",
+    "button.border": "#007671",
     "button.foreground": "#fff",
     "button.hoverBackground": "#007671e6",
     "button.secondaryBackground": "#e6f1f0",

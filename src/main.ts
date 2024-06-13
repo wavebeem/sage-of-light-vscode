@@ -416,10 +416,8 @@ function themeDragAndDrop(): ThemeUIColors {
 
 function themeButton(): ThemeUIColors {
   return {
-    // Really wish we could get separate borders for the two button types. 60%
-    // opacity black gives enough contrast for the secondary buttons, and isn't
-    // too noticeable on the primary buttons.
-    "button.border": alpha("#000000", 60),
+    // Really wish we could get separate borders for the two button types...
+    "button.border": ui.accent,
     "button.background": ui.accent,
     "button.foreground": ui.bg0,
     "button.hoverBackground": alpha(ui.accent, 90),
