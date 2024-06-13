@@ -59,21 +59,25 @@ const ui = {
   fg: oklch(30, 40, 190),
 
   bg0: oklch(100, 0, 190),
+  bg0b: oklch(99, 1, 190),
   bg1: oklch(95, 3, 190),
 
   border0: oklch(85, 6, 190),
   border1: oklch(60, 6, 190),
 
   tooltip: {
-    bg: oklch(98, 10, 100),
-    border: oklch(75, 20, 100),
+    // Based on classic Windows tooltips (background: #ffffe1, border and text:
+    // #000000)
+    bg: oklch(99, 10, 107),
+    border: oklch(60, 10, 107),
   },
 
   cursor: oklch(50, 100, 0),
 
   shadow: transparent,
 
-  link: oklch(50, 80, 250),
+  // Classic HTML blue link color ("#0000ff")
+  link: oklch(45, 77, 264),
 
   accent: oklch(50, 80, 190),
 
@@ -258,7 +262,7 @@ function themeTerminal(): ThemeUIColors {
   return {
     "terminal.tab.activeBorder": ui.accent,
     "terminal.foreground": syntax.default,
-    "terminal.background": ui.bg0,
+    "terminal.background": ui.bg0b,
     "terminal.ansiBlack": terminal.black,
     "terminal.ansiBlue": terminal.blue,
     "terminal.ansiBrightBlack": terminal.black,
@@ -476,7 +480,7 @@ function themeEditor(): ThemeUIColors {
     "editor.foreground": ui.fg,
     "editor.background": ui.bg0,
     "editor.foldBackground": transparent,
-    "editorLink.activeForeground": terminal.blue,
+    "editorLink.activeForeground": ui.link,
     "editor.lineHighlightBackground": alpha(ui.fg, 5),
     "editor.rangeHighlightBackground": alpha(bg.yellow, 25),
     "editor.selectionBackground": alpha(bg.green, 30),
@@ -530,7 +534,7 @@ function themeTabs(): ThemeUIColors {
     "editorGroupHeader.tabsBorder": ui.border0,
     "editorGroupHeader.border": ui.border0,
     "breadcrumb.background": ui.bg0,
-    "editorGroupHeader.noTabsBackground": ui.bg1,
+    "editorGroupHeader.noTabsBackground": ui.bg0b,
     "editorGroupHeader.tabsBackground": ui.bg1,
     "tab.activeBorder": ui.border0,
     "tab.unfocusedActiveBorder": ui.border0,
@@ -573,7 +577,7 @@ function colors(): ThemeUIColors {
     ...themeDragAndDrop(),
     ...themeButton(),
     foreground: ui.fg,
-    "panel.background": ui.bg0,
+    "panel.background": ui.bg0b,
     "panel.border": ui.border0,
     "panelTitle.activeBorder": ui.accent,
     "panelTitle.activeForeground": ui.accent,
@@ -1159,7 +1163,7 @@ function printContrastReport(): void {
     if (name === "white") {
       continue;
     }
-    showContrast("text", color, ui.bg0, `terminal.${name}`, "ui.bg0");
+    showContrast("text", color, ui.bg0b, `terminal.${name}`, "ui.bg0b");
     // showContrast("text", color, ui.bg1, `terminal.${name}`, "ui.bg1");
   }
   showContrast("text", ui.bracket1, ui.bg0, "ui.bracket1", "ui.bg0");
