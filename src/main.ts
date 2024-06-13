@@ -73,9 +73,9 @@ const ui = {
 
   shadow: transparent,
 
-  link: oklch(47, 80, 250),
+  link: oklch(50, 80, 250),
 
-  accent: oklch(47, 80, 300),
+  accent: oklch(50, 80, 190),
 
   bracket1: oklch(55, 40, 300),
   bracket2: oklch(55, 40, 40),
@@ -532,7 +532,7 @@ function themeTabs(): ThemeUIColors {
     "editorGroupHeader.tabsBorder": ui.border0,
     "editorGroupHeader.border": ui.border0,
     "breadcrumb.background": ui.bg0,
-    "editorGroupHeader.noTabsBackground": ui.bg0,
+    "editorGroupHeader.noTabsBackground": ui.bg1,
     "editorGroupHeader.tabsBackground": ui.bg1,
     "tab.activeBorder": ui.border0,
     "tab.unfocusedActiveBorder": ui.border0,
