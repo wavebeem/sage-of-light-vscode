@@ -59,10 +59,10 @@ const ui = {
   fg: oklch(30, 40, 190),
 
   bg0: oklch(100, 0, 190),
-  bg1: oklch(95, 2, 190),
+  bg1: oklch(95, 3, 190),
 
-  border0: oklch(85, 8, 190),
-  border1: oklch(60, 8, 190),
+  border0: oklch(85, 6, 190),
+  border1: oklch(60, 6, 190),
 
   tooltip: {
     bg: oklch(98, 10, 100),
