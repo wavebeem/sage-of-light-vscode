@@ -79,7 +79,8 @@ const ui = {
   // Classic HTML blue link color ("#0000ff")
   link: oklch(45, 77, 264),
 
-  accent: oklch(50, 80, 190),
+  accent0: oklch(50, 80, 190),
+  accent1: oklch(50, 80, 300),
 
   bracket1: oklch(55, 40, 300),
   bracket2: oklch(55, 40, 40),
@@ -98,7 +99,7 @@ const syntax = {
   function: oklch(52, 100, 40),
   property: oklch(52, 100, 190),
   comment: oklch(55, 0, 300),
-  key: oklch(42, 60, 300),
+  key: oklch(37, 60, 300),
 } as const;
 
 function createToken(
@@ -183,16 +184,16 @@ function themeActivityBar(): ThemeUIColors {
   return {
     "activityBar.border": ui.border0,
     "activityBar.background": ui.bg1,
-    "activityBar.foreground": ui.accent,
+    "activityBar.foreground": ui.accent1,
     "activityBar.inactiveForeground": ui.fg,
-    "activityBarBadge.background": ui.accent,
+    "activityBarBadge.background": ui.accent1,
     "activityBarBadge.foreground": ui.bg0,
-    "activityBar.activeBorder": ui.accent,
+    "activityBar.activeBorder": ui.accent1,
     "activityBar.activeBackground": transparent,
 
-    "activityBarTop.activeBorder": ui.accent,
-    "activityBarTop.dropBorder": ui.accent,
-    "activityBarTop.foreground": ui.accent,
+    "activityBarTop.activeBorder": ui.accent1,
+    "activityBarTop.dropBorder": ui.accent1,
+    "activityBarTop.foreground": ui.accent1,
     "activityBarTop.inactiveForeground": ui.fg,
   };
 }
@@ -216,13 +217,13 @@ function themeList(): ThemeUIColors {
 
     "list.errorForeground": terminal.red,
     "list.warningForeground": terminal.yellow,
-    "list.highlightForeground": ui.accent,
+    "list.highlightForeground": ui.accent1,
 
     "list.focusForeground": ui.fg,
     "list.focusHighlightForeground": ui.bg0,
     "list.activeSelectionIconForeground": ui.bg0,
     "list.activeSelectionForeground": ui.bg0,
-    "list.activeSelectionBackground": ui.accent,
+    "list.activeSelectionBackground": ui.accent1,
 
     "list.inactiveSelectionIconForeground": ui.fg,
     "list.inactiveSelectionForeground": ui.fg,
@@ -230,7 +231,7 @@ function themeList(): ThemeUIColors {
 
     "quickInputList.focusIconForeground": ui.bg0,
     "quickInputList.focusForeground": ui.bg0,
-    "quickInputList.focusBackground": ui.accent,
+    "quickInputList.focusBackground": ui.accent1,
 
     "list.hoverBackground": alpha(ui.border1, 10),
   };
@@ -250,7 +251,7 @@ function themeSettings(): ThemeUIColors {
   return {
     "settings.headerForeground": ui.fg,
     "settings.rowHoverBackground": alpha(ui.bg1, 25),
-    "settings.modifiedItemIndicator": ui.accent,
+    "settings.modifiedItemIndicator": ui.accent1,
     "settings.dropdownBackground": ui.bg0,
     "settings.checkboxBackground": ui.bg0,
     "settings.textInputBackground": ui.bg0,
@@ -260,7 +261,7 @@ function themeSettings(): ThemeUIColors {
 
 function themeTerminal(): ThemeUIColors {
   return {
-    "terminal.tab.activeBorder": ui.accent,
+    "terminal.tab.activeBorder": ui.accent1,
     "terminal.foreground": syntax.default,
     "terminal.background": ui.bg0b,
     "terminal.ansiBlack": terminal.black,
@@ -354,7 +355,7 @@ function themeStatusBar(): ThemeUIColors {
 function themeBadge(): ThemeUIColors {
   return {
     "badge.foreground": ui.bg0,
-    "badge.background": ui.accent,
+    "badge.background": ui.accent1,
   };
 }
 
@@ -421,14 +422,14 @@ function themeDragAndDrop(): ThemeUIColors {
 function themeButton(): ThemeUIColors {
   return {
     // Really wish we could get separate borders for the two button types...
-    "button.border": ui.accent,
-    "button.background": ui.accent,
+    "button.border": ui.accent0,
+    "button.background": ui.accent0,
     "button.foreground": ui.bg0,
-    "button.hoverBackground": alpha(ui.accent, 90),
+    "button.hoverBackground": alpha(ui.accent0, 90),
     "button.separator": alpha(ui.bg0, 30),
     "button.secondaryBackground": ui.bg1,
-    "button.secondaryForeground": ui.fg,
-    "button.secondaryHoverBackground": alpha(ui.bg1, 90),
+    "button.secondaryForeground": ui.accent0,
+    "button.secondaryHoverBackground": alpha(ui.bg0, 90),
   };
 }
 
@@ -538,8 +539,8 @@ function themeTabs(): ThemeUIColors {
     "editorGroupHeader.tabsBackground": ui.bg1,
     "tab.activeBorder": ui.border0,
     "tab.unfocusedActiveBorder": ui.border0,
-    "tab.activeBorderTop": ui.accent,
-    "tab.unfocusedActiveBorderTop": ui.accent,
+    "tab.activeBorderTop": ui.accent1,
+    "tab.unfocusedActiveBorderTop": ui.accent1,
     "tab.activeBackground": ui.bg0,
     "tab.activeForeground": syntax.default,
     "tab.inactiveBackground": ui.bg1,
@@ -549,7 +550,7 @@ function themeTabs(): ThemeUIColors {
 
 function colors(): ThemeUIColors {
   return {
-    focusBorder: ui.accent,
+    focusBorder: ui.accent1,
     errorForeground: terminal.red,
     disabledForeground: ui.border1,
     "icon.foreground": ui.fg,
@@ -579,8 +580,8 @@ function colors(): ThemeUIColors {
     foreground: ui.fg,
     "panel.background": ui.bg0b,
     "panel.border": ui.border0,
-    "panelTitle.activeBorder": ui.accent,
-    "panelTitle.activeForeground": ui.accent,
+    "panelTitle.activeBorder": ui.accent1,
+    "panelTitle.activeForeground": ui.accent1,
     "panelTitle.inactiveForeground": ui.fg,
     "sideBar.border": ui.border0,
     "sideBar.background": ui.bg1,
@@ -1149,8 +1150,10 @@ function printContrastReport(): void {
   showContrast("text", ui.fg, ui.bg1, "ui.fg", "ui.bg1");
   showContrast("text", ui.link, ui.bg0, "ui.link", "ui.bg0");
   showContrast("text", ui.link, ui.bg1, "ui.link", "ui.bg1");
-  showContrast("text", ui.accent, ui.bg0, "ui.accent", "ui.bg0");
-  showContrast("text", ui.accent, ui.bg1, "ui.accent", "ui.bg1");
+  showContrast("text", ui.accent0, ui.bg0, "ui.accent0", "ui.bg0");
+  showContrast("text", ui.accent0, ui.bg1, "ui.accent0", "ui.bg1");
+  showContrast("text", ui.accent1, ui.bg0, "ui.accent1", "ui.bg0");
+  showContrast("text", ui.accent1, ui.bg1, "ui.accent1", "ui.bg1");
   showContrast("decoration", ui.border0, ui.bg0, "ui.border0", "ui.bg0");
   showContrast("decoration", ui.border0, ui.bg1, "ui.border0", "ui.bg1");
   showContrast("ui", ui.border1, ui.bg0, "ui.border1", "ui.bg0");

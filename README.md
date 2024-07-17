@@ -6,7 +6,7 @@ A light theme based on teal, purple, orange, and green.
 
 Designed to be used in a well-lit environment.
 
-![](img/screenshot.webp)
+![](img/screenshot.png)
 
 ## License
 
